@@ -282,18 +282,12 @@ h2{font-size:1.8rem;font-weight:800;line-height:1.2;margin-bottom:4px}
 .acts{display:flex;flex-direction:column;gap:10px;margin:0}
 .acts .b{width:100%;font-family:inherit;cursor:pointer}
 .join .b3{background:transparent;color:#fff;border-color:#fff}
-.b:active{transform:scale(.97)}
-nav a:active{opacity:.6}
-.js .rv{opacity:0;transition:opacity .6s ease}
-.js .rv.in{opacity:1}
-@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transition:none}}
 .dk{background:var(--bg);padding-bottom:72px}
 .foot{padding-bottom:36px;margin-top:-36px;background:var(--red);color:#fff;border-radius:36px 36px 0 0;padding-top:36px}
 .foot h2{font-size:2.2rem;margin:0 0 14px}
 .foot hr{border:0;border-top:2px solid #fff;margin:0 0 8px}
 .fl{display:block;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:2.6rem;line-height:1.25;text-transform:uppercase;text-decoration:none;letter-spacing:.01em}
 .fl svg{width:30px;height:30px;margin-left:10px;vertical-align:-3px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.fl:hover{text-decoration:underline;text-underline-offset:6px}
 .allergy{margin-top:18px;font-size:.85rem}
 nav{position:fixed;left:0;right:0;bottom:0;background:#000;display:grid;grid-template-columns:repeat(4,1fr);height:calc(66px + env(safe-area-inset-bottom,0px));padding-top:10px;z-index:5}
 nav a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:#F1F1EF;padding:2px 0}
@@ -304,7 +298,6 @@ nav a:nth-child(1) svg{transform:scale(0.8551)}
 nav a:nth-child(2) svg{transform:scale(1.0413);stroke-width:1.73}
 nav a:nth-child(3) svg{transform:translateY(-0.981px) scale(0.9054);stroke-width:1.99}
 nav a:nth-child(4) svg{transform:translateY(0.127px) scale(0.9348)}
-nav a:hover{color:#fff}
 nav a.on{color:var(--redtext)}
 @media(max-width:560px){.cups{grid-template-columns:1fr}
 .cup{display:grid;grid-template-columns:1fr auto;grid-template-areas:"h b" "p b";column-gap:14px;align-items:center;padding:14px 20px;border-radius:18px}
@@ -347,10 +340,6 @@ br.m{display:none}
 .foot h2,.foot hr,.foot .allergy{grid-column:1/-1}
 .foot .fl{grid-row:3}
 nav{grid-template-columns:repeat(4,170px);justify-content:center}
-.b:hover{filter:brightness(1.08)}
-.it,.cup{transition:border-color .2s}
-.it:hover,.cup:hover{border-color:var(--red)}
-nav a{transition:color .2s}
 }
 
 /* motion */
@@ -358,6 +347,7 @@ nav a{transition:color .2s}
 .logo{animation:jfloat 5s ease-in-out infinite;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;outline:1px solid transparent;isolation:isolate}
 .logo img{transform:translateZ(0);backface-visibility:hidden}
 @media(prefers-reduced-motion:reduce){.logo{animation:none}}
+
 </style></head>
 <body>
 <div id="scroll" data-nosnippet>
@@ -399,7 +389,7 @@ nav a{transition:color .2s}
 <p>Find us upstairs, opposite Selfridges. Just head up the main dome escalators and you’ll see JAMUN right in front of you — luxury gulab jamun awaits!</p>
 <div class="acts">
 <a class="b" href="https://maps.google.com/?q=Trafford+Centre" target="_blank" rel="noopener">GET DIRECTIONS</a>
-<a class="b b3" id="cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=JAMUN+opens+at+the+Trafford+Centre&amp;dates=20270212T100000/20270212T110000&amp;ctz=Europe/London&amp;location=Trafford+Centre,+Manchester+(upstairs,+opposite+Selfridges)" target="_blank" rel="noopener">ADD TO CALENDAR</a>
+<a class="b b3" id="cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=JAMUN+opens+at+the+Trafford+Centre&amp;dates=20270212T100000/20270212T220000&amp;ctz=Europe/London&amp;location=Trafford+Centre,+Manchester+(upstairs,+opposite+Selfridges)" target="_blank" rel="noopener">ADD TO CALENDAR</a>
 <button class="b b3" id="share" type="button">SHARE WITH A FRIEND</button>
 </div>
 </div>
@@ -441,7 +431,7 @@ else if(d===0&&n<at(n,H[0])){e.textContent='TODAY';l.innerHTML='we open at '+f(H
 else if(n>=at(n,H[0])&&n<at(n,H[1])){e.textContent='OPEN';l.innerHTML='until '+f(H[1])+T}
 else{var nx=n<at(n,H[0])?n:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1);e.textContent='CLOSED';l.innerHTML='opens '+(nx===n?'today':'tomorrow')+' at '+f(hrs(nx)[0])+T}e.style.fontSize=isNaN(+e.textContent)?'1.45rem':'';e.parentNode.classList.add('ok')});
 var links=document.querySelectorAll('nav a'),secs=['home','singles','cups','findus'].map(function(id){return document.getElementById(id)}),lock=null,lt,de=document.documentElement;
-function setOn(i,both){links.forEach(function(x,j){x.classList.toggle('on',j===i||(both&&(i===1||i===2)&&(j===1||j===2)))})}
+function setOn(i,both){links.forEach(function(x,j){var on=j===i||(both&&(i===1||i===2)&&(j===1||j===2));x.classList.toggle('on',on);if(on)x.setAttribute('aria-current','true');else x.removeAttribute('aria-current')})}
 function fu(){return window.scrollY+document.querySelector('#findus .join').getBoundingClientRect().top-25}
 function tgt(j){if(j===0)return 0;if(j===3)return window.innerWidth<600?fu():de.scrollHeight-window.innerHeight;var h=secs[j].querySelector('h2');return window.scrollY+h.getBoundingClientRect().top-19.5}
 function spy(){var y=window.scrollY,i=0;for(var j=1;j<secs.length;j++){if(y>=tgt(j)-2)i=j}
@@ -469,12 +459,6 @@ done(ok?'LINK COPIED':'COPY THE LINK FROM YOUR BROWSER')}
 function copy(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(data.url).then(function(){done('LINK COPIED')},old)}else old()}
 if(navigator.share){navigator.share(data).catch(function(e){if(!e||e.name!=='AbortError')copy()})}else copy()
 });
-var els=document.querySelectorAll('.orig,.it,.cup,.sauce,.join');
-els.forEach(function(e){e.classList.add('rv')});
-if('IntersectionObserver' in window){
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
-els.forEach(function(el){io.observe(el)});
-}else{els.forEach(function(el){el.classList.add('in')})}
 })();
 </script>
 <script>(function(){function fit(){var sp=document.getElementById('sp'),j=document.querySelector('#findus .join');if(!sp||!j)return;sp.style.height='0px';if(window.innerWidth>=600)return;var de=document.documentElement,top=window.scrollY+j.getBoundingClientRect().top-25,need=top+window.innerHeight-de.scrollHeight;sp.style.height=Math.max(0,Math.ceil(need))+'px'}window.addEventListener('load',fit);window.addEventListener('resize',fit);setTimeout(fit,300);fit()})();</script></body>
