@@ -218,7 +218,6 @@
 <meta property="og:image:alt" content="JAMUN Preview Picture">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jamun.uk/og-image.png">
-<link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -452,7 +451,7 @@ function settle(){clearTimeout(lt);lt=setTimeout(function(){lock=null;spy()},150
 window.addEventListener('scroll',function(){if(lock!==null){settle();return}spy()},{passive:true});
 links.forEach(function(a,i){a.addEventListener('click',function(){lock=i;var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect();setOn(i,Math.abs(k.top-m.top)<4);settle()})});
 spy();
-document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var r=document.querySelector('#findus .join').getBoundingClientRect();window.scrollTo({top:window.innerWidth>=900?de.scrollHeight:window.scrollY+r.top-25})})});
+document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:de.scrollHeight})})});
 document.querySelectorAll('a[href="#singles"],a[href="#cups"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var h=document.querySelector(a.getAttribute('href')+' h2');window.scrollTo({top:window.scrollY+h.getBoundingClientRect().top-19.5})})});
 document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0})})});
 
@@ -477,5 +476,5 @@ els.forEach(function(el){io.observe(el)});
 }else{els.forEach(function(el){el.classList.add('in')})}
 })();
 </script>
-<script>(function(){function fit(){var sp=document.getElementById('sp'),j=document.querySelector('#findus .join');if(!sp||!j)return;sp.style.height='0px';if(window.innerWidth>=900)return;var de=document.documentElement,top=window.scrollY+j.getBoundingClientRect().top-25,need=top+window.innerHeight-de.scrollHeight;sp.style.height=Math.max(0,Math.ceil(need))+'px'}window.addEventListener('load',fit);window.addEventListener('resize',fit);setTimeout(fit,300);fit()})();</script></body>
+<script>(function(){function fit(){var sp=document.getElementById('sp'),j=document.querySelector('#findus .join');if(!sp||!j)return;sp.style.height='0px';if(window.innerWidth>=600)return;var de=document.documentElement,top=window.scrollY+j.getBoundingClientRect().top-25,need=top+window.innerHeight-de.scrollHeight;sp.style.height=Math.max(0,Math.ceil(need))+'px'}window.addEventListener('load',fit);window.addEventListener('resize',fit);setTimeout(fit,300);fit()})();</script></body>
 </html>
