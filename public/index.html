@@ -442,16 +442,17 @@ else if(n>=at(n,H[0])&&n<at(n,H[1])){e.textContent='OPEN';l.innerHTML='until '+f
 else{var nx=n<at(n,H[0])?n:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1);e.textContent='CLOSED';l.innerHTML='opens '+(nx===n?'today':'tomorrow')+' at '+f(hrs(nx)[0])+T}e.style.fontSize=isNaN(+e.textContent)?'1.45rem':'';e.parentNode.classList.add('ok')});
 var links=document.querySelectorAll('nav a'),secs=['home','singles','cups','findus'].map(function(id){return document.getElementById(id)}),lock=null,lt,de=document.documentElement;
 function setOn(i,both){links.forEach(function(x,j){x.classList.toggle('on',j===i||(both&&(i===1||i===2)&&(j===1||j===2)))})}
-function spy(){var line=window.innerHeight*.4,i=0;secs.forEach(function(s,j){if(s.getBoundingClientRect().top<=line)i=j});
+function fu(){return window.scrollY+document.querySelector('#findus .join').getBoundingClientRect().top-25}
+function tgt(j){if(j===0)return 0;if(j===3)return window.innerWidth<600?fu():de.scrollHeight-window.innerHeight;var h=secs[j].querySelector('h2');return window.scrollY+h.getBoundingClientRect().top-19.5}
+function spy(){var y=window.scrollY,i=0;for(var j=1;j<secs.length;j++){if(y>=tgt(j)-2)i=j}
 var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect(),side=Math.abs(k.top-m.top)<4;
 if(side&&i===2)i=1;
-if(window.scrollY+window.innerHeight>=de.scrollHeight-4)i=secs.length-1;
 setOn(i,side)}
 function settle(){clearTimeout(lt);lt=setTimeout(function(){lock=null;spy()},150)}
 window.addEventListener('scroll',function(){if(lock!==null){settle();return}spy()},{passive:true});
 links.forEach(function(a,i){a.addEventListener('click',function(){lock=i;var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect();setOn(i,Math.abs(k.top-m.top)<4);settle()})});
 spy();
-document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:de.scrollHeight})})});
+document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})});
 document.querySelectorAll('a[href="#singles"],a[href="#cups"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var h=document.querySelector(a.getAttribute('href')+' h2');window.scrollTo({top:window.scrollY+h.getBoundingClientRect().top-19.5})})});
 document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0})})});
 
