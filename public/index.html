@@ -7,33 +7,52 @@
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>JAMUN</title>
-<link rel="canonical" href="https://jamun.uk/">
+<title>JAMUN | Luxury Gulab Jamun</title>
+<link rel="canonical" href="https://jamun.uk">
 <meta name="application-name" content="JAMUN">
 <meta property="og:site_name" content="JAMUN">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"JAMUN","alternateName":["Jamun","jamun.uk"],"url":"https://jamun.uk/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"JAMUN","url":"https://jamun.uk"}</script>
 <meta name="description" content="Luxury gulab jamun split open and dripped warm with Nutella, Biscoff, kunafa, and more. Find us at the Trafford Centre.">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "FoodEstablishment",
+ "@type": ["FoodEstablishment", "Bakery"],
  "@id": "https://jamun.uk/#business",
  "name": "JAMUN",
- "alternateName": "JAMUN Gulab Jamuns",
- "url": "https://jamun.uk/",
+ "url": "https://jamun.uk",
  "description": "Luxury gulab jamun split open and dripped warm with Nutella, Biscoff, kunafa, and more. Find us at the Trafford Centre.",
  "slogan": "From Asia, for everyone",
  "image": "https://jamun.uk/og-image.png",
  "logo": "https://jamun.uk/apple-touch-icon.png",
  "servesCuisine": [
-  "Indian",
-  "Asian",
-  "Desserts"
+  "Gulab Jamun",
+  "Asian Sweets",
+  "Dessert"
  ],
- "priceRange": "££",
+ "priceRange": "£2.49-£9.99",
+ "openingHoursSpecification": [
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+   "opens": "10:00",
+   "closes": "22:00"
+  },
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": "Saturday",
+   "opens": "10:00",
+   "closes": "21:00"
+  },
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": "Sunday",
+   "opens": "12:00",
+   "closes": "18:00"
+  }
+ ],
  "address": {
   "@type": "PostalAddress",
-  "streetAddress": "The Trafford Centre",
+  "streetAddress": "The Trafford Centre, Trafford Park, Stretford",
   "addressLocality": "Manchester",
   "postalCode": "M17 8AA",
   "addressCountry": "GB"
@@ -49,6 +68,7 @@
    {
     "@type": "MenuSection",
     "name": "Singles",
+    "description": "Split open and dripped warm.",
     "hasMenuItem": [
      {
       "@type": "MenuItem",
@@ -57,6 +77,26 @@
       "offers": {
        "@type": "Offer",
        "price": "2.49",
+       "priceCurrency": "GBP"
+      }
+     },
+     {
+      "@type": "MenuItem",
+      "name": "Dreamy Nutella Jamun",
+      "description": "Split with Nutella dripped through",
+      "offers": {
+       "@type": "Offer",
+       "price": "2.99",
+       "priceCurrency": "GBP"
+      }
+     },
+     {
+      "@type": "MenuItem",
+      "name": "Caramelised Biscoff Jamun",
+      "description": "Split with Biscoff sauce dripped through",
+      "offers": {
+       "@type": "Offer",
+       "price": "2.99",
        "priceCurrency": "GBP"
       }
      },
@@ -84,26 +124,6 @@
       "@type": "MenuItem",
       "name": "Chocolate Kunafa Jamun",
       "description": "Kunafa in the middle and chocolate sauce on top",
-      "offers": {
-       "@type": "Offer",
-       "price": "2.99",
-       "priceCurrency": "GBP"
-      }
-     },
-     {
-      "@type": "MenuItem",
-      "name": "Dreamy Nutella Jamun",
-      "description": "Split with Nutella dripped through",
-      "offers": {
-       "@type": "Offer",
-       "price": "2.99",
-       "priceCurrency": "GBP"
-      }
-     },
-     {
-      "@type": "MenuItem",
-      "name": "Caramelised Biscoff Jamun",
-      "description": "Split with Biscoff sauce dripped through",
       "offers": {
        "@type": "Offer",
        "price": "2.99",
@@ -353,7 +373,7 @@ nav a{transition:color .2s}
 <hr>
 <a class="fl" href="https://www.instagram.com/jamun.uk" target="_blank" rel="noopener">Instagram<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
 <a class="fl" href="https://www.tiktok.com/@jamun.uk" target="_blank" rel="noopener">TikTok<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-<p class="allergy">Contains milk, wheat, soya, and nuts.<br><strong>Please ask our staff in store about allergens.</strong></p>
+<p class="allergy"><span data-nosnippet>Contains milk, wheat, soya, and nuts.<br><strong>Please ask our staff in store about allergens.</strong></span></p>
 </div>
 </footer><div id="sp" aria-hidden="true" style="height:0"></div>
 </div>
