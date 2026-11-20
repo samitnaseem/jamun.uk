@@ -281,6 +281,7 @@ h2{font-size:1.8rem;font-weight:800;line-height:1.2;margin-bottom:4px}
 .acts{display:flex;flex-direction:column;gap:10px;margin:0}
 .acts .b{width:100%;font-family:inherit;cursor:pointer}
 .join .b3{background:transparent;color:#fff;border-color:#fff}
+.navbg{position:fixed;left:0;right:0;bottom:0;height:calc(66px + env(safe-area-inset-bottom,0px));background:#000;z-index:4;pointer-events:none}
 .dk{background:var(--bg);padding-bottom:72px;min-height:100vh;min-height:100svh}
 .foot{padding-bottom:36px;margin-top:-36px;background:var(--red);color:#fff;border-radius:36px 36px 0 0;padding-top:36px}
 .foot h2{font-size:2.2rem;margin:0 0 14px}
@@ -383,7 +384,7 @@ html.js:not(.rdy) .jm{opacity:0}
 .join .acts .b:not(.b3){color:#000;mix-blend-mode:screen}
 @media(prefers-reduced-motion:reduce){.hi,.jm,.pj{animation:none}.pour{display:none}.rv{opacity:1;transform:none}.rl span,.fl svg,.b,.it,.cup,.orig{transition:none}}
 </style></head>
-<body>
+<body><div class="navbg" aria-hidden="true"></div>
 <div id="scroll" data-nosnippet>
 <a class="bar" href="#findus"><span data-nosnippet>Opening Fri, 12 Feb 2027 at the Trafford Centre.</span><span data-nosnippet>Tap for details.</span></a>
 <div class="dk">
