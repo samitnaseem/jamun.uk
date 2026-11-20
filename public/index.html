@@ -360,6 +360,10 @@ html.js:not(.rdy) .hi{animation-play-state:paused}
 .jm svg,.pj svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:1.1;stroke-linecap:round}
 .jm{transition:opacity .7s ease .15s}
 html.js:not(.rdy) .jm{opacity:0}
+nav a{transition:opacity .6s ease calc(.2s + var(--n,0)*.06s)}
+nav a:nth-child(2){--n:1}nav a:nth-child(3){--n:2}nav a:nth-child(4){--n:3}
+html.js:not(.rdy) nav a{opacity:0}
+@media(prefers-reduced-motion:reduce){nav a{transition:none}}
 .stk{z-index:2}
 .jm1{--s:34px;left:6px;top:20px}
 .jm2{--s:22px;right:10px;top:150px;--dl:-1.5s;--t:5.5s}
