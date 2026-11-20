@@ -418,8 +418,8 @@ html.js:not(.rdy) .hi{animation-play-state:paused}
 <h2>FIND US</h2>
 <p class="loc"><span>Find us upstairs, opposite Selfridges.</span><span>Just head up the main dome escalators and you’ll see JAMUN right in front of you —</span><span>luxury gulab jamun awaits!</span></p>
 <div class="acts">
-<a class="b" href="https://maps.google.com/?q=Trafford+Centre" target="_blank" rel="noopener">GET DIRECTIONS</a>
-<a class="b b3" id="cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=JAMUN+opens+at+the+Trafford+Centre&amp;dates=20270212T100000/20270212T220000&amp;ctz=Europe/London&amp;location=Trafford+Centre,+Manchester+(upstairs,+opposite+Selfridges)" target="_blank" rel="noopener">ADD TO CALENDAR</a>
+<a class="b" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Trafford+Centre,+Trafford+Park,+Stretford,+Manchester+M17+8AA" target="_blank" rel="noopener">GET DIRECTIONS</a>
+<a class="b b3" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=JAMUN+opens+at+the+Trafford+Centre&amp;dates=20270212T100000/20270212T220000&amp;ctz=Europe/London&amp;location=The+Trafford+Centre,+Trafford+Park,+Stretford,+Manchester+M17+8AA" target="_blank" rel="noopener">ADD TO CALENDAR</a>
 <button class="b b3" id="share" type="button">SHARE WITH A FRIEND</button>
 </div>
 </div>
@@ -478,7 +478,6 @@ document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListe
 
 (function(){var r=document.documentElement,c='';function u(){var m=r.scrollHeight-window.innerHeight,n=window.scrollY>m/2?'#000':'';if(n!==c){c=n;r.style.backgroundColor=n}}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u()})();
 document.documentElement.classList.add('js');
-(function(){var c=document.getElementById('cal');if(!c)return;var ua=navigator.userAgent;if(!(/iP(hone|ad|od)/.test(ua)||/Macintosh/.test(ua)))return;c.href='/jamun-opening.ics';c.removeAttribute('target');c.removeAttribute('rel')})();
 (function(){
 var sh=document.getElementById('share');
 sh.addEventListener('click',function(){
