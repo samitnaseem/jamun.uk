@@ -478,7 +478,7 @@ document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListe
 
 (function(){var r=document.documentElement,c='';function u(){var m=r.scrollHeight-window.innerHeight,n=window.scrollY>m/2?'#000':'';if(n!==c){c=n;r.style.backgroundColor=n}}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u()})();
 document.documentElement.classList.add('js');
-(function(){var c=document.getElementById('cal');if(!c)return;var ua=navigator.userAgent,ios=/iP(hone|ad|od)/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1),mac=/Macintosh/.test(ua),and=/Android/.test(ua);if(!ios&&!mac&&!and)return;var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//JAMUN//Opening//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:jamun-opening-20270212@jamun.uk','DTSTAMP:20261119T000000Z','DTSTART:20270212T100000Z','DTEND:20270212T220000Z','SUMMARY:JAMUN opens at the Trafford Centre','LOCATION:Trafford Centre\\, Manchester (upstairs\\, opposite Selfridges)','END:VEVENT','END:VCALENDAR'].join('\r\n');c.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(L);c.removeAttribute('target');c.removeAttribute('rel');if(!ios)c.setAttribute('download','jamun-opening.ics')})();
+(function(){var c=document.getElementById('cal');if(!c)return;var ua=navigator.userAgent;if(!(/iP(hone|ad|od)/.test(ua)||/Macintosh/.test(ua)))return;c.href='/jamun-opening.ics';c.removeAttribute('target');c.removeAttribute('rel')})();
 (function(){
 var sh=document.getElementById('share');
 sh.addEventListener('click',function(){
