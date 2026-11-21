@@ -224,6 +224,7 @@
 <style>
 :root{--red:#CE1F45;--green:#007551;--bg:#0b0f12;--card:#151b21;--line:#26303a;--paper:#F1F1EF;--mute:#B4BAC0;--redtext:#FF4D6D}
 *{box-sizing:border-box;margin:0}
+html,body{overscroll-behavior:none}
 html{background:var(--red);scroll-behavior:smooth}
 .bar{position:relative}
 .bar::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;background:var(--red);pointer-events:none}
@@ -306,7 +307,6 @@ nav a.on{color:var(--redtext)}
 .cup b{grid-area:b;margin-top:0;font-size:1.15rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media(min-width:900px){
-html,body{overscroll-behavior-x:none}
 html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.35) transparent}
 .wrap{max-width:1040px;padding:0 32px}
 .bar{padding-bottom:12px}
