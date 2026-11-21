@@ -331,7 +331,7 @@ br.m{display:none}
 .cup b{margin-top:4px}
 .sauce{height:6.3rem;padding:0 20px 0 24px;border-radius:24px;line-height:1.4;display:flex;flex-direction:column;justify-content:center}
 .sauce strong{margin-bottom:2px}
-.join{max-width:860px;margin:0 auto;padding:36px 40px 40px}
+.join{max-width:none;margin:0;padding:36px 40px 40px}
 .join h2{font-size:2rem}
 .join p{font-size:15px;max-width:52ch;margin:8px auto 20px}
 .acts{flex-direction:row;flex-wrap:wrap;gap:12px}
@@ -519,5 +519,6 @@ fit();window.addEventListener('load',fit);window.addEventListener('resize',fit);
 <script>(function(){var d=document.documentElement,i=document.querySelector('.logo img'),done=false;
 function go(){if(done)return;done=true;d.classList.add('rdy')}
 if(i&&i.decode)i.decode().then(go,go);else go();setTimeout(go,1500)})();</script>
+<script>(function(){function m(){var o=document.querySelector(".orig"),s=document.querySelector(".sauce");if(!o||!s)return;if(window.innerWidth<900){s.style.height="";return}s.style.height=o.getBoundingClientRect().height+"px"}m();window.addEventListener("load",m);window.addEventListener("resize",m);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(m)})();</script>
 </body>
 </html>
