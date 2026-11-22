@@ -226,6 +226,7 @@
 *{box-sizing:border-box;margin:0}
 html,body{overscroll-behavior:none}
 html{background:var(--red);scroll-behavior:smooth;touch-action:pan-x pan-y}
+body,#scroll{touch-action:pan-x pan-y}
 .bar{position:relative}
 .bar::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;background:var(--red);pointer-events:none}
 body{font-family:Poppins,system-ui,sans-serif;background:var(--red);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
@@ -534,6 +535,14 @@ fit();window.addEventListener('load',fit);window.addEventListener('resize',fit);
 function go(){if(done)return;done=true;d.classList.add('rdy')}
 if(i&&i.decode)i.decode().then(go,go);else go();setTimeout(go,1500)})();</script>
 <script>(function(){function m(){var o=document.querySelector(".orig"),s=document.querySelector(".sauce");if(!o||!s)return;if(window.innerWidth<900){s.style.height="";return}s.style.height=o.getBoundingClientRect().height+"px"}m();window.addEventListener("load",m);window.addEventListener("resize",m);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(m)})();</script>
-<script>(function(){var n=function(e){e.preventDefault()};["gesturestart","gesturechange","gestureend"].forEach(function(t){document.addEventListener(t,n,{passive:false})});document.addEventListener("touchmove",function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false})})();</script>
+<script>(function(){
+var n=function(e){e.preventDefault()};
+["gesturestart","gesturechange","gestureend"].forEach(function(t){[window,document,document.documentElement].forEach(function(o){o.addEventListener(t,n,{passive:false,capture:true})})});
+["touchstart","touchmove"].forEach(function(t){document.addEventListener(t,function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false,capture:true})});
+document.addEventListener("wheel",function(e){if(e.ctrlKey)e.preventDefault()},{passive:false});
+var vp=document.querySelector('meta[name="viewport"]'),orig=vp&&vp.getAttribute("content"),tm;
+function reset(){var v=window.visualViewport;if(!vp||!v||Math.abs(v.scale-1)<0.02)return;vp.setAttribute("content","width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover");setTimeout(function(){vp.setAttribute("content",orig)},60)}
+if(window.visualViewport)window.visualViewport.addEventListener("resize",function(){clearTimeout(tm);tm=setTimeout(reset,120)});
+})();</script>
 </body>
 </html>
