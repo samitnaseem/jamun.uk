@@ -539,6 +539,7 @@ if(i&&i.decode)i.decode().then(go,go);else go();setTimeout(go,1500)})();</script
 var n=function(e){e.preventDefault()};
 ["gesturestart","gesturechange","gestureend"].forEach(function(t){[window,document,document.documentElement].forEach(function(o){o.addEventListener(t,n,{passive:false,capture:true})})});
 ["touchstart","touchmove"].forEach(function(t){document.addEventListener(t,function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false,capture:true})});
+["touchstart","touchmove","touchend"].forEach(function(t){window.addEventListener(t,function(e){if(typeof e.scale==="number"&&e.scale!==1)e.preventDefault()},{passive:false,capture:true})});
 document.addEventListener("wheel",function(e){if(e.ctrlKey)e.preventDefault()},{passive:false});
 var vp=document.querySelector('meta[name="viewport"]'),orig=vp&&vp.getAttribute("content"),tm;
 function reset(){var v=window.visualViewport;if(!vp||!v||Math.abs(v.scale-1)<0.02)return;vp.setAttribute("content","width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover");setTimeout(function(){vp.setAttribute("content",orig)},60)}
