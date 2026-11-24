@@ -515,7 +515,7 @@ document.documentElement.classList.add('js');
 (function(){
 var sh=document.getElementById('share');
 sh.addEventListener('click',function(){
-var data={url:'https://jamun.uk/'};
+var data={title:'JAMUN',text:'JAMUN: warm gulab jamun, split open and dripped warm',url:'https://jamun.uk/'};
 function done(m){var o=sh.textContent;sh.textContent=m;setTimeout(function(){sh.textContent=o},1800)}
 function old(){var ok=false;try{var t=document.createElement('textarea');t.value=data.url;t.setAttribute('readonly','');t.style.cssText='position:fixed;opacity:0;top:0';document.body.appendChild(t);t.select();t.setSelectionRange(0,999);ok=document.execCommand('copy');document.body.removeChild(t)}catch(e){}
 done(ok?'LINK COPIED':'COPY THE LINK FROM YOUR BROWSER')}
