@@ -209,7 +209,7 @@
 }
 </script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="JAMUN | Coming Soon to Manchester">
+<meta property="og:title" content="JAMUN">
 <meta property="og:description" content="JAMUN is a fusion dessert brand reimagining the traditional gulab jamun with a contemporary twist: split open and dripped warm.">
 <meta property="og:url" content="https://jamun.uk/">
 <meta property="og:image" content="https://jamun.uk/og-image.png">
@@ -518,9 +518,11 @@ document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListe
 (function(){var r=document.documentElement,c='';function u(){var m=r.scrollHeight-window.innerHeight,n=window.scrollY>m/2?'#000':'';if(n!==c){c=n;r.style.backgroundColor=n}}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u()})();
 document.documentElement.classList.add('js');
 (function(){
-var sh=document.getElementById('share');
+var sh=document.getElementById('share'),icon=null;
+try{fetch('/apple-touch-icon.png').then(function(r){return r.ok?r.blob():null}).then(function(b){if(b)icon=new File([b],'JAMUN.png',{type:b.type||'image/png'})}).catch(function(){})}catch(e){}
 sh.addEventListener('click',function(){
-var data={title:'JAMUN',text:'From Asia, for everyone: gulab jamun, opening at the Trafford Centre.',url:'https://jamun.uk/'};
+var data={url:'https://jamun.uk/'};
+try{if(icon&&navigator.canShare&&navigator.canShare({files:[icon],url:data.url}))data={files:[icon],url:data.url}}catch(e){}
 function done(m){var o=sh.textContent;sh.textContent=m;setTimeout(function(){sh.textContent=o},1800)}
 function old(){var ok=false;try{var t=document.createElement('textarea');t.value=data.url;t.setAttribute('readonly','');t.style.cssText='position:fixed;opacity:0;top:0';document.body.appendChild(t);t.select();t.setSelectionRange(0,999);ok=document.execCommand('copy');document.body.removeChild(t)}catch(e){}
 done(ok?'LINK COPIED':'COPY THE LINK FROM YOUR BROWSER')}
