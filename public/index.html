@@ -506,9 +506,10 @@ function fu(){return window.scrollY+document.querySelector('#findus .join').getB
 function so(){if(window.innerWidth<900)return 19.5;var s=secs[1],h=s.querySelector('h2'),nv=document.querySelector('nav'),bh=s.getBoundingClientRect().bottom-parseFloat(getComputedStyle(s).paddingBottom)-h.getBoundingClientRect().top,av=window.innerHeight-(nv?nv.offsetHeight:66);return Math.max(0,(av-bh-(parseFloat(getComputedStyle(de).getPropertyValue('--gt'))||0))/2)}
 function settle(){clearTimeout(lt);lt=setTimeout(function(){lock=null;window.removeEventListener('scroll',settle);paint()},150)}
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[secs.indexOf(e.target)]=e.isIntersecting});paint()},{rootMargin:'-49% 0px -49% 0px'});secs.forEach(function(x){io.observe(x)});var en=document.getElementById('end');if(en)new IntersectionObserver(function(es){atEnd=es[0].isIntersecting;paint()}).observe(en)}
+function lk(i){lock=i;setOn([i]);window.addEventListener('scroll',settle,{passive:true});settle()}
 links.forEach(function(a,i){a.addEventListener('click',function(){lock=i;var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect(),side=Math.abs(k.top-m.top)<4;setOn(side&&(i===1||i===2)?[1,2]:[i]);window.addEventListener('scroll',settle,{passive:true});settle()})});
-document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})});
-(function(){var c=document.getElementById('cntBox');if(c)c.addEventListener('click',function(){window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})})();
+document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();lk(3);window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})});
+(function(){var c=document.getElementById('cntBox');if(c)c.addEventListener('click',function(){lk(3);window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})})();
 document.querySelectorAll('a[href="#singles"],a[href="#cups"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var h=document.querySelector(a.getAttribute('href')+' h2');window.scrollTo({top:window.scrollY+h.getBoundingClientRect().top-so()})})});
 document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0})})});
 
