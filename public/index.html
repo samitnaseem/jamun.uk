@@ -270,7 +270,6 @@ h2{font-size:1.8rem;font-weight:800;line-height:1.2;margin-bottom:4px}
 .mdc .say svg{display:block;max-width:100%}
 .mdc .say rect.g{fill:var(--green)}
 .mdc .say .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.mdc .pj{opacity:.5}
 .md:not(.open) .pj{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.md,.mdc,.md.open,.md.open .mdc,.mdx{transition:none}}
 .orig{background:var(--green);border-radius:24px;padding:20px 20px 20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;color:#fff}
@@ -416,7 +415,7 @@ html.js:not(.rdy) nav a{opacity:0}
 .fl:focus-visible .rl span{transform:translateY(-100%)}
 .pour{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
 .pj{position:absolute;left:var(--l);top:0;width:var(--s);height:var(--s);opacity:.9;will-change:transform;animation:jpour var(--t) linear infinite;animation-delay:var(--d)}
-@keyframes jpour{0%{transform:translate3d(0,-60px,0) rotate(0)}100%{transform:translate3d(0,560px,0) rotate(220deg)}}
+@keyframes jpour{0%{transform:translate3d(0,-60px,0)}100%{transform:translate3d(0,560px,0)}}
 .loc span{display:block;text-wrap:balance}
 .join .acts .b:not(.b3){color:#000;mix-blend-mode:screen}
 @media(prefers-reduced-motion:reduce){.hi,.jm,.pj,.hb .btns .b{animation:none}.pour{display:none}.rv{opacity:1;transform:none}.rl span,.fl svg,.b,.it,.cup,.orig{transition:none}}
