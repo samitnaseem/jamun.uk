@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head><script>document.documentElement.className+=' js'</script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#CE1F45">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -225,7 +225,7 @@
 :root{--gt:5.85px;--red:#CE1F45;--green:#007551;--bg:#0b0f12;--card:#151b21;--line:#26303a;--paper:#F1F1EF;--mute:#B4BAC0;--redtext:#FF4D6D}
 *{box-sizing:border-box;margin:0}
 html,body{overscroll-behavior:none}
-html{background:var(--red);scroll-behavior:smooth;touch-action:pan-x pan-y}
+html{background:var(--red);scroll-behavior:smooth}
 .bar{position:relative}
 .bar::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;background:var(--red);pointer-events:none}
 body{font-family:Poppins,system-ui,sans-serif;background:var(--red);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
@@ -549,7 +549,6 @@ fit();window.addEventListener('load',fit);window.addEventListener('resize',fit);
 function go(){if(done)return;done=true;d.classList.add('rdy')}
 if(i&&i.decode)i.decode().then(go,go);else go();setTimeout(go,1500)})();</script>
 <script>(function(){function m(){var o=document.querySelector(".orig"),s=document.querySelector(".sauce");if(!o||!s)return;if(window.innerWidth<900){s.style.height="";return}s.style.height=o.getBoundingClientRect().height+"px"}m();window.addEventListener("load",m);window.addEventListener("resize",m);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(m)})();</script>
-<script>(function(){var n=function(e){e.preventDefault()};["gesturestart","gesturechange","gestureend"].forEach(function(t){document.addEventListener(t,n,{passive:false})});document.addEventListener("touchmove",function(e){if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false})})();</script>
 <div class="md" id="whatModal" role="dialog" aria-modal="true" aria-labelledby="whatTitle" aria-hidden="true">
 <div class="mdc"><div class="pour" aria-hidden="true"><span class="pj" style="--l:6%;--s:26px;--t:5.2s;--d:-0.4s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:19%;--s:18px;--t:6.4s;--d:-3.1s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:33%;--s:30px;--t:5.8s;--d:-1.6s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:47%;--s:20px;--t:7.0s;--d:-4.8s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:61%;--s:28px;--t:5.4s;--d:-2.4s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:74%;--s:22px;--t:6.6s;--d:-0.9s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:86%;--s:30px;--t:6.0s;--d:-3.9s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:93%;--s:16px;--t:7.2s;--d:-5.6s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span></div>
 <button type="button" class="mdx" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
