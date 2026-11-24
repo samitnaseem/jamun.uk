@@ -473,7 +473,7 @@ html.js:not(.rdy) nav a{opacity:0}
 <a class="fl" href="https://www.tiktok.com/@jamun.uk" target="_blank" rel="noopener"><span class="rl"><span>TikTok</span><span aria-hidden="true">TikTok</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
 <p class="allergy"><span data-nosnippet>Contains milk, wheat, soya, and nuts.<br><strong>Please ask our staff in store about allergens.</strong></span></p>
 </div>
-</footer><div id="sp" aria-hidden="true" style="height:0"></div>
+</footer><div id="sp" aria-hidden="true" style="height:0"></div><div id="end" aria-hidden="true" style="height:1px;margin-top:-1px"></div>
 </div>
 <div data-nosnippet style="display:contents"><nav aria-label="Page sections">
 <a class="on" href="#home"><svg class="jicon" viewBox="-0.06881 -0.06881 24.13762 24.13762" aria-hidden="true"><path d="M16.34 6.00 13.14 6.00 10.74 17.28 10.01 17.54 9.22 17.88 8.68 18.19 8.29 18.45 7.91 18.77 7.61 19.09 7.32 19.53 7.16 19.92 7.08 20.30 7.06 20.75 7.12 21.21 7.24 21.56 7.44 21.90 7.68 22.15 7.94 22.35 8.27 22.54 8.93 22.74 9.23 22.78 9.77 22.79 10.50 22.70 11.10 22.51 11.74 22.19 12.32 21.75 12.71 21.29 13.07 20.66 13.35 19.95 13.58 19.10zM10.47 18.41 10.37 18.98 10.19 19.71 9.99 20.21 9.73 20.63 9.43 20.93 9.15 21.05 8.79 21.03 8.57 20.91 8.36 20.67 8.28 20.39 8.32 20.00 8.52 19.61 8.84 19.27 9.26 18.97 9.89 18.64zM15.03 1.20 14.69 1.25 14.32 1.39 14.08 1.55 13.77 1.86 13.58 2.13 13.44 2.49 13.38 2.81 13.38 3.17 13.44 3.49 13.57 3.81 13.77 4.11 14.01 4.35 14.21 4.49 14.53 4.65 14.88 4.74 15.21 4.76 15.63 4.70 15.94 4.58 16.23 4.39 16.53 4.12 16.71 3.86 16.85 3.56 16.93 3.17 16.93 2.80 16.86 2.46 16.73 2.14 16.52 1.84 16.29 1.61 15.97 1.39 15.69 1.28 15.37 1.21z"/></svg>Home</a>
@@ -497,19 +497,14 @@ else if(d===1){e.textContent=1;l.innerHTML='day until we open at<br>the Trafford
 else if(d===0&&n<at(n,H[0])){e.textContent='TODAY';l.innerHTML='we open at '+f(H[0])+T}
 else if(n>=at(n,H[0])&&n<at(n,H[1])){e.textContent='OPEN';l.innerHTML='until '+f(H[1])+T}
 else{var nx=n<at(n,H[0])?n:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1);e.textContent='CLOSED';l.innerHTML='opens '+(nx===n?'today':'tomorrow')+' at '+f(hrs(nx)[0])+T}e.style.fontSize=isNaN(+e.textContent)?'1.45rem':'';e.parentNode.classList.add('ok')});
-var links=document.querySelectorAll('nav a'),secs=['home','singles','cups','findus'].map(function(id){return document.getElementById(id)}),lock=null,lt,de=document.documentElement;
-function setOn(i,both){links.forEach(function(x,j){var on=j===i||(both&&(i===1||i===2)&&(j===1||j===2));x.classList.toggle('on',on);if(on)x.setAttribute('aria-current','true');else x.removeAttribute('aria-current')})}
+var links=document.querySelectorAll('nav a'),secs=['home','singles','cups','findus'].map(function(id){return document.getElementById(id)}),lock=null,lt,de=document.documentElement,vis=[],atEnd=false;
+function setOn(on){links.forEach(function(x,j){var a=on.indexOf(j)>-1;x.classList.toggle('on',a);if(a)x.setAttribute('aria-current','true');else x.removeAttribute('aria-current')})}
+function paint(){if(lock!==null)return;var on=[];if(atEnd)on=[3];else vis.forEach(function(v,j){if(v)on.push(j)});if(on.length)setOn(on)}
 function fu(){return window.scrollY+document.querySelector('#findus .join').getBoundingClientRect().top-25}
 function so(){if(window.innerWidth<900)return 19.5;var s=secs[1],h=s.querySelector('h2'),nv=document.querySelector('nav'),bh=s.getBoundingClientRect().bottom-parseFloat(getComputedStyle(s).paddingBottom)-h.getBoundingClientRect().top,av=window.innerHeight-(nv?nv.offsetHeight:66);return Math.max(0,(av-bh-(parseFloat(getComputedStyle(de).getPropertyValue('--gt'))||0))/2)}
-function tgt(j){if(j===0)return 0;if(j===3)return window.innerWidth<600?fu():de.scrollHeight-window.innerHeight;var h=secs[j].querySelector('h2');return window.scrollY+h.getBoundingClientRect().top-so()}
-function spy(){var y=window.scrollY,i=0;for(var j=1;j<secs.length;j++){if(y>=tgt(j)-2)i=j}
-var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect(),side=Math.abs(k.top-m.top)<4;
-if(side&&i===2)i=1;
-setOn(i,side)}
-function settle(){clearTimeout(lt);lt=setTimeout(function(){lock=null;spy()},150)}
-window.addEventListener('scroll',function(){if(lock!==null){settle();return}spy()},{passive:true});
-links.forEach(function(a,i){a.addEventListener('click',function(){lock=i;var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect();setOn(i,Math.abs(k.top-m.top)<4);settle()})});
-spy();
+function settle(){clearTimeout(lt);lt=setTimeout(function(){lock=null;window.removeEventListener('scroll',settle);paint()},150)}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[secs.indexOf(e.target)]=e.isIntersecting});paint()},{rootMargin:'-49% 0px -49% 0px'});secs.forEach(function(x){io.observe(x)});var en=document.getElementById('end');if(en)new IntersectionObserver(function(es){atEnd=es[0].isIntersecting;paint()}).observe(en)}
+links.forEach(function(a,i){a.addEventListener('click',function(){lock=i;var m=secs[1].getBoundingClientRect(),k=secs[2].getBoundingClientRect(),side=Math.abs(k.top-m.top)<4;setOn(side&&(i===1||i===2)?[1,2]:[i]);window.addEventListener('scroll',settle,{passive:true});settle()})});
 document.querySelectorAll('a[href="#findus"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})});
 (function(){var c=document.getElementById('cntBox');if(c)c.addEventListener('click',function(){window.scrollTo({top:window.innerWidth<600?fu():de.scrollHeight})})})();
 document.querySelectorAll('a[href="#singles"],a[href="#cups"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var h=document.querySelector(a.getAttribute('href')+' h2');window.scrollTo({top:window.scrollY+h.getBoundingClientRect().top-so()})})});
@@ -518,11 +513,9 @@ document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListe
 (function(){var r=document.documentElement,c='';function u(){var m=r.scrollHeight-window.innerHeight,n=window.scrollY>m/2?'#000':'';if(n!==c){c=n;r.style.backgroundColor=n}}window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u()})();
 document.documentElement.classList.add('js');
 (function(){
-var sh=document.getElementById('share'),icon=null;
-try{fetch('/apple-touch-icon.png').then(function(r){return r.ok?r.blob():null}).then(function(b){if(b)icon=new File([b],'JAMUN.png',{type:b.type||'image/png'})}).catch(function(){})}catch(e){}
+var sh=document.getElementById('share');
 sh.addEventListener('click',function(){
 var data={url:'https://jamun.uk/'};
-try{if(icon&&navigator.canShare&&navigator.canShare({files:[icon],url:data.url}))data={files:[icon],url:data.url}}catch(e){}
 function done(m){var o=sh.textContent;sh.textContent=m;setTimeout(function(){sh.textContent=o},1800)}
 function old(){var ok=false;try{var t=document.createElement('textarea');t.value=data.url;t.setAttribute('readonly','');t.style.cssText='position:fixed;opacity:0;top:0';document.body.appendChild(t);t.select();t.setSelectionRange(0,999);ok=document.execCommand('copy');document.body.removeChild(t)}catch(e){}
 done(ok?'LINK COPIED':'COPY THE LINK FROM YOUR BROWSER')}
