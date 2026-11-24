@@ -226,7 +226,8 @@
 *{box-sizing:border-box;margin:0}
 html,body{overscroll-behavior:none}
 html{background:var(--red);scroll-behavior:smooth}
-.bar{position:relative}
+.bar{position:relative;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+.bar:focus,.bar:focus-visible{outline:0}
 .bar::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;background:var(--red);pointer-events:none}
 body{font-family:Poppins,system-ui,sans-serif;background:var(--red);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
 #singles,#cups{scroll-margin-top:-16.5px}
@@ -555,7 +556,7 @@ if(i&&i.decode)i.decode().then(go,go);else go();setTimeout(go,1500)})();</script
 <p>From Asia, a gulab jamun is a soft, golden milk dumpling soaked in rose-cardamom syrup, traditionally eaten whole.<br>At JAMUN, we do things differently: ours are split open and dripped warm with flavours you already love, like Nutella, Biscoff, and OREO.</p>
 </div>
 </div>
-<script>(function(){var b=document.getElementById('whatBtn'),m=document.getElementById('whatModal');if(!b||!m)return;var x=m.querySelector('.mdx'),r=document.documentElement;function o(){m.style.top=Math.max(0,Math.round(b.getBoundingClientRect().bottom))+'px';m.classList.add('open');m.setAttribute('aria-hidden','false');r.style.overflow='hidden';x.focus()}function c(){m.classList.remove('open');m.setAttribute('aria-hidden','true');r.style.overflow='';b.focus()}b.addEventListener('click',o);x.addEventListener('click',c);m.addEventListener('click',function(e){if(e.target===m)c()});document.addEventListener('keydown',function(e){if(!m.classList.contains('open'))return;if(e.key==='Escape')c();else if(e.key==='Tab'){e.preventDefault();x.focus()}})})();</script>
+<script>(function(){var b=document.getElementById('whatBtn'),m=document.getElementById('whatModal');if(!b||!m)return;var x=m.querySelector('.mdx'),r=document.documentElement;function o(){m.style.top=Math.max(0,Math.ceil(b.getBoundingClientRect().bottom))+'px';m.classList.add('open');m.setAttribute('aria-hidden','false');r.style.overflow='hidden';x.focus()}function c(){m.classList.remove('open');m.setAttribute('aria-hidden','true');r.style.overflow='';b.focus()}b.addEventListener('click',o);x.addEventListener('click',c);m.addEventListener('click',function(e){if(e.target===m)c()});document.addEventListener('keydown',function(e){if(!m.classList.contains('open'))return;if(e.key==='Escape')c();else if(e.key==='Tab'){e.preventDefault();x.focus()}})})();</script>
 <script>(function(){var g=document.getElementById("sayg"),t=document.getElementById("sayt");if(!g||!t)return;function fit(){try{g.setAttribute("width",Math.ceil(t.getComputedTextLength())+36)}catch(e){}}fit();window.addEventListener("load",fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit)})();</script>
 </body>
 </html>
