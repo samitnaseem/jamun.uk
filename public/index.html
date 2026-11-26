@@ -228,7 +228,7 @@ html{background:var(--red);scroll-behavior:smooth}
 .bar{position:relative;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 .bar:focus,.bar:focus-visible{outline:0}
 .bar::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;background:var(--red);pointer-events:none}
-body{font-family:Poppins,system-ui,sans-serif;background:var(--red);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
+body{font-family:Poppins,system-ui,sans-serif;background:var(--bg);color:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
 #singles,#cups{scroll-margin-top:-16.5px}
 #findus{scroll-margin-top:-11px}
 #scroll{overflow-x:clip}
@@ -422,7 +422,6 @@ html.js:not(.rdy) nav a{opacity:0}
 @media(prefers-reduced-motion:reduce){.hi,.jm,.pj,.hb .btns .b{animation:none}.pour{display:none}.rv{opacity:1;transform:none}.rl span,.fl svg,.b,.it,.cup,.orig{transition:none}}
 /* no red flash: the canvas behind the page is the page colour (--bg), not red, so unpainted/loading frames match the page. Red only behind the top bar; nav untouched */
 html{background-color:var(--bg);background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-size:100% calc(env(safe-area-inset-top,0px) + 44px)}
-html.js:not(.rdy) body{background:transparent}
 </style></head>
 <body><div class="navbg" aria-hidden="true"></div>
 <div id="scroll" data-nosnippet>
