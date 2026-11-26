@@ -251,6 +251,8 @@ h1{font-size:clamp(2rem,8vw,3.2rem);line-height:1.1;font-weight:800;margin:28px 
 .count{margin:22px auto 0;display:inline-flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px 20px}
 .count b{font-size:2rem;font-weight:800;color:var(--redtext);line-height:1}
 .count span{text-align:center;font-size:.85rem;color:var(--mute);line-height:1.3}
+.count b.cs{font-size:1.05rem;letter-spacing:.04em;white-space:nowrap}
+.count b.cs+span{white-space:nowrap}
 .stk{position:relative;display:inline-block}
 section{padding:36px 0 32px}
 #findus{padding:calc(36px + var(--gt)) 0 calc(32px + var(--gt))}
@@ -325,7 +327,7 @@ nav a.on{color:var(--redtext)}
 .cup h3{grid-area:h;font-size:1.02rem;line-height:1.3}
 .cup p{grid-area:p}
 .cup b{grid-area:b;margin-top:0;font-size:1.15rem}}
-@media(max-width:899px){.hb{display:grid;width:max-content;max-width:100%;margin:0 auto}.hb .btns{width:auto;margin:0}.hb .b{line-height:1.6}.hb .count{display:flex;justify-content:center;margin:28px 0 0;padding:12px 20px;height:auto;border-radius:20px}}
+@media(max-width:899px){.hb{display:grid;width:max-content;max-width:100%;margin:0 auto}.hb .btns{width:auto;margin:0}.hb .b{line-height:1.6}.hb .count{display:flex;justify-content:center;width:0;min-width:100%;box-sizing:border-box;margin:28px 0 0;padding:12px 20px;height:auto;border-radius:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media(min-width:900px){
 .dk{padding-bottom:76px}
@@ -384,6 +386,15 @@ html.js:not(.rdy) .hb .btns .b{animation-play-state:paused}
 @keyframes jin{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
 .hi{animation:jin .75s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0s)}
 .count b{font-variant-numeric:tabular-nums}
+.count b.od{display:inline-flex}
+.count .od span{font:inherit;color:inherit;line-height:inherit;text-align:inherit}
+.od .dw{display:inline-block;height:1em;margin:-.08em 0;padding:.08em 0;overflow:hidden;vertical-align:top}
+.od .dc{display:block;transform:translateY(-50%)}
+.od.go .dc{animation:odo .85s cubic-bezier(.65,0,.2,1) both;animation-delay:1.4s}
+.od .dc i{display:block;height:1em;font-style:normal}
+html.js:not(.rdy) .od.go .dc{animation-play-state:paused}
+@keyframes odo{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media(prefers-reduced-motion:reduce){.od.go .dc{animation:none;transform:translateY(-50%)}}
 .jm{position:absolute;width:var(--s);height:var(--s);pointer-events:none;z-index:1;animation:jbob var(--t,4.5s) ease-in-out infinite;animation-delay:var(--dl,0s)}
 .jm,.pj{border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(0,0,0,0) 50%,rgba(0,0,0,.45) 100%),radial-gradient(circle at 32% 28%,#e29a5c 0,#a8531f 45%,#5e270c 100%)}
 .jm svg,.pj svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:1.1;stroke-linecap:round}
@@ -430,7 +441,7 @@ html.js:not(.rdy) nav a{opacity:0}
 <h1 class="hi" style="--d:.12s">GULAB JAMUNS<br><span style="white-space:nowrap">FOR EVERYONE</span></h1>
 <p class="lead hi" style="--d:.22s">Reimagining the traditional gulab jamun<br>for a whole new audience.</p>
 <div class="hb"><div class="btns hi" style="--d:.3s"><a class="b b1" href="#singles">MENU</a><a class="b b2" href="#findus">FIND US</a></div>
-<div class="count hi" style="--d:.38s;visibility:hidden" aria-hidden="true" id="cntBox"><b class="dn">--</b><span data-nosnippet>days until we open at<br>the Trafford Centre</span></div></div>
+<div class="count hi ok" style="--d:.38s;cursor:pointer" id="cntBox"><b class="od" aria-label="2027"><span aria-hidden="true">202</span><span class="dw" aria-hidden="true"><span class="dc"><i>6</i><i>7</i></span></span></b><span data-nosnippet>coming soon<br>to Manchester</span></div></div><script>(function(){try{var y=+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',year:'numeric'}).format(new Date());if(y===2026)document.querySelector('#cntBox .od').classList.add('go')}catch(e){}})()</script>
 </header>
 <main class="wrap">
 <section id="singles" data-nosnippet>
