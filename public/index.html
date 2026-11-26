@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-<head><script>(function(){var m=/[?&]t=([^&]*)/.exec(location.search);if(m)m[1].split(',').forEach(function(k){if(/^[a-z]+$/.test(k))document.documentElement.className+=' t-'+k})})()</script><script>document.documentElement.className+=' js';(function(){try{var n=(performance.getEntriesByType('navigation')[0]||{}).type||'';if(n!=='reload'&&n!=='back_forward'&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.className+=' anim'}catch(e){}})()</script>
+<head><script>(function(){var m=/[?&]t=([^&]*)/.exec(location.search);if(m){var ks=m[1].split(',');if(ks.indexOf('all')>-1)ks='anim,pour,logo,jm,iso,navbg,fade,bg,js,smooth'.split(',');ks.forEach(function(k){if(/^[a-z]+$/.test(k))document.documentElement.className+=' t-'+k});if(ks.indexOf('js')>-1){var d=window.dispatchEvent.bind(window);window.dispatchEvent=function(e){return e&&e.type==='resize'?true:d(e)}}}})()</script><script>document.documentElement.className+=' js';(function(){try{var n=(performance.getEntriesByType('navigation')[0]||{}).type||'';if(n!=='reload'&&n!=='back_forward'&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.className+=' anim'}catch(e){}})()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#CE1F45">
