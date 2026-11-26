@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-<head><script>document.documentElement.className+=' js'</script>
+<head><script>(function(){var d=document.documentElement,t='';d.className+=' js';try{t=(performance.getEntriesByType('navigation')[0]||{}).type||''}catch(e){}if(!t)try{t=performance.navigation.type===1?'reload':performance.navigation.type===2?'back_forward':''}catch(e){}if(t==='reload'||t==='back_forward')d.className+=' again'})()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#CE1F45">
@@ -420,6 +420,17 @@ html.js:not(.rdy) nav a{opacity:0}
 @keyframes jpour{0%{transform:translate3d(0,-60px,0)}100%{transform:translate3d(0,560px,0)}}
 .loc span{display:block;text-wrap:balance}
 @media(prefers-reduced-motion:reduce){.hi,.jm,.pj,.hb .btns .b{animation:none}.pour{display:none}.rv{opacity:1;transform:none}.rl span,.fl svg,.b,.it,.cup,.orig{transition:none}}
+/* smooth load: no red flash while the page is still laying out */
+html.js::before{content:"";position:fixed;left:0;right:0;bottom:-120px;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:3;pointer-events:none;opacity:1;transition:opacity .3s ease;animation:veilout 0s linear 2.4s forwards}
+html.js.rdy::before{opacity:0}
+html.again::before{transition-duration:.15s}
+@keyframes veilout{to{opacity:0;visibility:hidden}}
+html:not(.rdy){scroll-behavior:auto}
+/* refresh / back: skip the entrance animation, just show the page */
+html.again .hi,html.again .hb .btns .b{animation:none}
+html.again .jm,html.again nav a{transition:none}
+html.again.js:not(.rdy) .jm,html.again.js:not(.rdy) nav a{opacity:1}
+@media(prefers-reduced-motion:reduce){html.js::before{transition:none}}
 </style></head>
 <body><div class="navbg" aria-hidden="true"></div>
 <div id="scroll" data-nosnippet>
@@ -533,7 +544,7 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 if('IntersectionObserver' in window){
 var io=new IntersectionObserver(function(es){var j=0;es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;io.unobserve(t);t.style.setProperty('--d',(j++*.08)+'s');t.classList.add('in');setTimeout(function(){t.classList.remove('rv','in');t.style.removeProperty('--d')},1400)})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
 var nt='';try{nt=(performance.getEntriesByType('navigation')[0]||{}).type||''}catch(e){}if(nt!=='reload'&&nt!=='back_forward')document.querySelectorAll('.orig,.it,.cup,.sauce').forEach(function(t){t.classList.add('rv');io.observe(t)})}
-document.querySelectorAll('.dn').forEach(function(b){var v=+b.textContent;if(!(v>0))return;var p=b.parentNode,t0;p.setAttribute('aria-live','off');var sc=p.getBoundingClientRect().width/p.offsetWidth||1;b.style.width=(b.getBoundingClientRect().width/sc)+'px';b.style.textAlign='right';b.style.flex='none';b.textContent='0';
+document.querySelectorAll('.dn').forEach(function(b){var v=+b.textContent;if(!(v>0)||document.documentElement.classList.contains('again'))return;var p=b.parentNode,t0;p.setAttribute('aria-live','off');var sc=p.getBoundingClientRect().width/p.offsetWidth||1;b.style.width=(b.getBoundingClientRect().width/sc)+'px';b.style.textAlign='right';b.style.flex='none';b.textContent='0';
 function step(ts){if(!t0)t0=ts;var k=Math.min((ts-t0)/1300,1);b.textContent=Math.round(v*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step);else p.setAttribute('aria-live','polite')}
 setTimeout(function(){requestAnimationFrame(step)},500)});
 })();</script>
@@ -545,8 +556,12 @@ var k=w+'|'+m;if(k===last)return;last=k;p.style.width=w+'px';p.style.maxWidth='n
 busy=true;window.dispatchEvent(new Event('resize'));busy=false}
 fit();window.addEventListener('load',fit);window.addEventListener('resize',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit)})();</script>
 <script>(function(){var d=document.documentElement,i=document.querySelector('.logo img'),done=false;
-function go(){if(done)return;done=true;d.classList.add('rdy')}
-if(i&&i.decode)i.decode().then(go,go);else go();setTimeout(go,1500)})();</script>
+var n=0;function go(){if(done)return;done=true;d.classList.add('rdy')}
+function ok(){if(++n===3)requestAnimationFrame(go)}
+if(i&&i.decode)i.decode().then(ok,ok);else ok();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(ok,ok);else ok();
+if(document.readyState==='complete')ok();else window.addEventListener('load',ok);
+setTimeout(go,1500)})();</script>
 <script>(function(){function m(){var o=document.querySelector(".orig"),s=document.querySelector(".sauce");if(!o||!s)return;if(window.innerWidth<900){s.style.height="";return}s.style.height=o.getBoundingClientRect().height+"px"}m();window.addEventListener("load",m);window.addEventListener("resize",m);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(m)})();</script>
 <div class="md" id="whatModal" data-nosnippet role="dialog" aria-modal="true" aria-labelledby="whatTitle" aria-hidden="true">
 <div class="mdc"><div class="pour" aria-hidden="true"><span class="pj" style="--l:6%;--s:26px;--t:5.2s;--d:-0.4s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:19%;--s:18px;--t:6.4s;--d:-3.1s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:33%;--s:30px;--t:5.8s;--d:-1.6s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:47%;--s:20px;--t:7.0s;--d:-4.8s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:61%;--s:28px;--t:5.4s;--d:-2.4s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:74%;--s:22px;--t:6.6s;--d:-0.9s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:86%;--s:30px;--t:6.0s;--d:-3.9s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span><span class="pj" style="--l:93%;--s:16px;--t:7.2s;--d:-5.6s" aria-hidden="true"><svg viewBox="3.9 3.9 16.2 16.2" aria-hidden="true"><path d="M7.6 11.2a4.6 4.6 0 0 1 3.2-3.6"/></svg></span></div>
