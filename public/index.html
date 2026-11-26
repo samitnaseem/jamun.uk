@@ -421,6 +421,10 @@ html.js:not(.rdy) nav a{opacity:0}
 .loc span{display:block;text-wrap:balance}
 @media(prefers-reduced-motion:reduce){.hi,.jm,.pj,.hb .btns .b{animation:none}.pour{display:none}.rv{opacity:1;transform:none}.rl span,.fl svg,.b,.it,.cup,.orig{transition:none}}
 html.anim .orig,html.anim .it,html.anim .cup,html.anim .sauce{opacity:0;transform:translateY(24px)}
+/* pause off-screen animation + drop forced layers: stops Safari dropping paint while scrolling */
+.pj{will-change:auto}
+.logo{will-change:auto}
+.off .pj,.off.jm,.off .logo,.off.logo{animation-play-state:paused!important}
 /* no red flash: the canvas behind the page is the page colour (--bg), not red, so unpainted/loading frames match the page. Red only behind the top bar; nav untouched */
 html{background-color:var(--bg);background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-size:100% calc(env(safe-area-inset-top,0px) + 44px)}
 </style></head>
@@ -573,5 +577,6 @@ els.forEach(function(o,i){if(o.e.style.marginTop!==old[i])ch=true});
 if(ch)window.dispatchEvent(new Event('resize'))}catch(e){}busy=false}
 align();window.addEventListener('load',align);window.addEventListener('resize',align);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(align);setTimeout(align,300)})();</script>
 
+<script>(function(){if(!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('off',!e.isIntersecting)})},{rootMargin:'120px 0px'});document.querySelectorAll('.join,.hero .jm,.hero .logo').forEach(function(t){io.observe(t)})})();</script>
 </body>
 </html>
