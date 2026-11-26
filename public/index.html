@@ -420,8 +420,8 @@ html.js:not(.rdy) nav a{opacity:0}
 @keyframes jpour{0%{transform:translate3d(0,-60px,0)}100%{transform:translate3d(0,560px,0)}}
 .loc span{display:block;text-wrap:balance}
 @media(prefers-reduced-motion:reduce){.hi,.jm,.pj,.hb .btns .b{animation:none}.pour{display:none}.rv{opacity:1;transform:none}.rl span,.fl svg,.b,.it,.cup,.orig{transition:none}}
-/* no red flash while loading: canvas starts as the page colour (--bg); only the top red bar area stays red; nav untouched */
-html.js:not(.rdy){background-color:var(--bg);background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-size:100% calc(env(safe-area-inset-top,0px) + 44px)}
+/* no red flash: the canvas behind the page is the page colour (--bg), not red, so unpainted/loading frames match the page. Red only behind the top bar; nav untouched */
+html{background-color:var(--bg);background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-size:100% calc(env(safe-area-inset-top,0px) + 44px)}
 html.js:not(.rdy) body{background:transparent}
 </style></head>
 <body><div class="navbg" aria-hidden="true"></div>
